@@ -1,0 +1,50 @@
+{
+    "categories": [
+        {
+            "name": "General",
+            "description": "General information about the university"
+        },
+        {
+            "name": "Admissions",
+            "description": "Information about admissions process",
+            "parent": "General"
+        },
+        {
+            "name": "Courses",
+            "description": "Information about courses and programs",
+            "parent": "General"
+        }
+    ],
+    "intents": [
+        {
+            "name": "admission_inquiry",
+            "description": "Questions about admission process",
+            "keywords": ["admission", "apply", "application", "enroll", "register", "join"]
+        },
+        {
+            "name": "course_inquiry",
+            "description": "Questions about courses and programs",
+            "keywords": ["course", "program", "degree", "major", "study", "curriculum"]
+        }
+    ],
+    "knowledge_base": [
+        {
+            "question": "What are the admission requirements?",
+            "answer": "Our admission requirements include:\n1. Completed application form\n2. Academic transcripts\n3. Letters of recommendation\n4. Statement of purpose\n5. English proficiency test scores (IELTS/TOEFL)",
+            "category": "Admissions",
+            "intent": "admission_inquiry",
+            "priority": 1,
+            "context_data": {
+                "deadlines": "Applications are accepted year-round",
+                "fees": "Application fee: $50"
+            }
+        },
+        {
+            "question": "What programs do you offer?",
+            "answer": "We offer a wide range of undergraduate and graduate programs including:\n1. Computer Science\n2. Business Administration\n3. Engineering\n4. Arts and Sciences",
+            "category": "Courses",
+            "intent": "course_inquiry",
+            "priority": 1
+        }
+    ]
+}

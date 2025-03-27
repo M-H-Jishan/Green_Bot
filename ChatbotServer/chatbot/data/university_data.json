@@ -1,0 +1,218 @@
+{
+    "university_info": {
+        "name": "Green University",
+        "established": "2000",
+        "location": {
+            "address": "Your University Address",
+            "city": "Your City",
+            "country": "Bangladesh",
+            "coordinates": {
+                "latitude": 23.8103,
+                "longitude": 90.4125
+            }
+        },
+        "contact": {
+            "phone": "+880-XXX-XXXXXXX",
+            "email": "info@greenuniversity.edu",
+            "website": "https://www.greenuniversity.edu"
+        }
+    },
+    "academic_programs": {
+        "undergraduate": [
+            {
+                "name": "Computer Science and Engineering",
+                "degree": "B.Sc.",
+                "department": "Computer Science and Engineering",
+                "duration": "4 years",
+                "description": "A comprehensive program covering programming, algorithms, AI, and software engineering",
+                "requirements": [
+                    "Minimum GPA 3.0 in HSC with Mathematics and Physics",
+                    "Pass in admission test",
+                    "English language proficiency"
+                ],
+                "career_prospects": [
+                    "Software Engineer",
+                    "System Analyst",
+                    "Data Scientist",
+                    "AI Engineer",
+                    "Technology Consultant"
+                ]
+            },
+            {
+                "name": "Business Administration",
+                "degree": "BBA",
+                "department": "Business Administration",
+                "duration": "4 years",
+                "description": "Learn business management, marketing, finance, and entrepreneurship",
+                "requirements": [
+                    "Minimum GPA 3.0 in HSC",
+                    "Pass in admission test",
+                    "English language proficiency"
+                ],
+                "career_prospects": [
+                    "Business Analyst",
+                    "Marketing Manager",
+                    "Financial Analyst",
+                    "Entrepreneur",
+                    "Management Consultant"
+                ]
+            }
+        ],
+        "graduate": [
+            {
+                "name": "Master of Business Administration",
+                "degree": "MBA",
+                "department": "Business Administration",
+                "duration": "2 years",
+                "description": "Advanced business studies with specialization options",
+                "requirements": [
+                    "Bachelor's degree with minimum CGPA 2.5",
+                    "2 years of work experience preferred",
+                    "GMAT/GRE score (optional)"
+                ],
+                "research_areas": [
+                    "Finance",
+                    "Marketing",
+                    "Operations Management",
+                    "Strategic Management"
+                ]
+            }
+        ]
+    },
+    "facilities": {
+        "libraries": [
+            {
+                "name": "Central Library",
+                "location": "Main Campus",
+                "hours": "8:00 AM - 10:00 PM",
+                "resources": [
+                    "100,000+ books",
+                    "Digital library access",
+                    "Study rooms",
+                    "Online journals subscription",
+                    "Multimedia section"
+                ]
+            }
+        ],
+        "laboratories": [
+            {
+                "name": "Computer Lab 1",
+                "department": "CSE",
+                "equipment": [
+                    "50 high-end computers",
+                    "Software development tools",
+                    "AI/ML workstations",
+                    "Network testing equipment"
+                ]
+            }
+        ],
+        "housing": {
+            "dormitories": [
+                {
+                    "name": "Green Hall",
+                    "type": "Male",
+                    "capacity": 200,
+                    "amenities": [
+                        "Wi-Fi",
+                        "Study room",
+                        "Gym",
+                        "Cafeteria"
+                    ]
+                }
+            ]
+        },
+        "sports": [
+            {
+                "facility": "Indoor Sports Complex",
+                "sports": [
+                    "Basketball",
+                    "Badminton",
+                    "Table Tennis"
+                ],
+                "hours": "6:00 AM - 9:00 PM"
+            }
+        ]
+    },
+    "faculty": {
+        "departments": [
+            {
+                "name": "Computer Science and Engineering",
+                "head": "Dr. John Doe",
+                "programs_offered": [
+                    "B.Sc. in CSE",
+                    "M.Sc. in CSE"
+                ],
+                "contact": {
+                    "email": "cse@greenuniversity.edu",
+                    "phone": "+880-XXX-XXXXXXX",
+                    "office": "Building A, Room 301"
+                }
+            }
+        ]
+    },
+    "admission": {
+        "deadlines": {
+            "undergraduate": {
+                "fall": "2025-07-30",
+                "spring": "2025-12-30"
+            },
+            "graduate": {
+                "fall": "2025-07-15",
+                "spring": "2025-12-15"
+            }
+        },
+        "requirements": {
+            "undergraduate": [
+                "Minimum GPA 3.0 in HSC",
+                "Pass in admission test",
+                "English language proficiency",
+                "Original academic certificates",
+                "Passport size photographs"
+            ],
+            "graduate": [
+                "Bachelor's degree with minimum CGPA 2.5",
+                "GRE/GMAT scores (for specific programs)",
+                "Statement of purpose",
+                "Two recommendation letters"
+            ],
+            "international": [
+                "Academic certificates with English translation",
+                "Proof of English proficiency (IELTS/TOEFL)",
+                "Financial statement",
+                "Valid passport copy"
+            ]
+        },
+        "process": [
+            "Submit online application",
+            "Pay application fee",
+            "Take admission test",
+            "Attend interview (if required)",
+            "Submit original documents",
+            "Pay semester fee"
+        ]
+    },
+    "financial": {
+        "tuition": {
+            "undergraduate": {
+                "domestic": 50000,
+                "international": 75000
+            },
+            "graduate": {
+                "domestic": 60000,
+                "international": 90000
+            }
+        },
+        "scholarships": [
+            {
+                "name": "Merit Scholarship",
+                "amount": "50% tuition waiver",
+                "eligibility": [
+                    "Minimum CGPA 3.8",
+                    "Regular course load",
+                    "No backlog"
+                ],
+                "deadline": "2025-08-15"
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+INFO 2025-02-02 11:52:51,395 autoreload 7 140146942974848 Watching for file changes with StatReloader
+INFO 2025-02-02 11:53:12,178 autoreload 7 140146942974848 /app/ChatbotServer/settings.py changed, reloading.
+INFO 2025-02-02 11:53:13,368 autoreload 9 140365063048064 Watching for file changes with StatReloader
+INFO 2025-02-02 11:56:53,810 autoreload 7 140177946299264 Watching for file changes with StatReloader
+INFO 2025-02-02 11:57:34,748 autoreload 7 140177946299264 /app/chatbot/services.py changed, reloading.
+INFO 2025-02-02 11:57:36,048 autoreload 91 140163155590016 Watching for file changes with StatReloader
+INFO 2025-02-02 11:58:14,724 autoreload 91 140163155590016 /app/chatbot/services.py changed, reloading.
+INFO 2025-02-02 11:58:16,040 autoreload 219 139880037833600 Watching for file changes with StatReloader
+INFO 2025-02-02 11:58:46,033 autoreload 219 139880037833600 /app/chatbot/services.py changed, reloading.
+INFO 2025-02-02 11:58:47,425 autoreload 303 140271503461248 Watching for file changes with StatReloader
+WARNING 2025-02-02 12:00:57,462 log 303 140269443794624 Not Found: /api/chatbot/
+WARNING 2025-02-02 12:00:57,463 basehttp 303 140269443794624 "GET /api/chatbot/ HTTP/1.1" 404 5882
+INFO 2025-02-02 12:01:17,746 basehttp 303 140269443794624 "GET /api/swagger/ HTTP/1.1" 200 2162
+WARNING 2025-02-02 12:08:11,356 log 303 140269443794624 Unauthorized: /api/
+WARNING 2025-02-02 12:08:11,357 basehttp 303 140269443794624 "GET /api/ HTTP/1.1" 401 58
+INFO 2025-02-02 12:08:23,384 autoreload 303 140271503461248 /app/ChatbotServer/settings.py changed, reloading.
+INFO 2025-02-02 12:08:25,136 autoreload 521 140443881986944 Watching for file changes with StatReloader
+INFO 2025-02-02 12:08:35,005 autoreload 8 140039010376576 Watching for file changes with StatReloader

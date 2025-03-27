@@ -1,0 +1,248 @@
+2025/02/02 11:49:31 [notice] 1#1: using the "epoll" event method
+2025/02/02 11:49:31 [notice] 1#1: nginx/1.25.5
+2025/02/02 11:49:31 [notice] 1#1: built by gcc 13.2.1 20231014 (Alpine 13.2.1_git20231014) 
+2025/02/02 11:49:31 [notice] 1#1: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/02 11:49:31 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/02 11:49:31 [notice] 1#1: start worker processes
+2025/02/02 11:49:31 [notice] 1#1: start worker process 21
+2025/02/02 11:49:31 [notice] 1#1: start worker process 22
+2025/02/02 11:49:31 [notice] 1#1: start worker process 23
+2025/02/02 11:49:31 [notice] 1#1: start worker process 24
+2025/02/02 11:49:31 [notice] 1#1: start worker process 25
+2025/02/02 11:49:31 [notice] 1#1: start worker process 26
+2025/02/02 11:49:31 [notice] 1#1: start worker process 27
+2025/02/02 11:49:31 [notice] 1#1: start worker process 28
+2025/02/02 11:49:31 [notice] 1#1: start worker process 29
+2025/02/02 11:49:31 [notice] 1#1: start worker process 30
+2025/02/02 11:49:31 [notice] 1#1: start worker process 31
+2025/02/02 11:49:31 [notice] 1#1: start worker process 32
+2025/02/02 11:49:31 [notice] 1#1: start worker process 33
+2025/02/02 11:49:31 [notice] 1#1: start worker process 34
+2025/02/02 11:49:31 [notice] 1#1: start worker process 35
+2025/02/02 11:49:31 [notice] 1#1: start worker process 36
+2025/02/02 11:49:31 [notice] 1#1: start worker process 37
+2025/02/02 11:49:31 [notice] 1#1: start worker process 38
+2025/02/02 11:49:31 [notice] 1#1: start worker process 39
+2025/02/02 11:49:31 [notice] 1#1: start worker process 40
+2025/02/02 11:49:31 [notice] 1#1: start cache manager process 41
+2025/02/02 11:49:31 [notice] 1#1: start cache loader process 42
+2025/02/02 11:50:01 [emerg] 43#43: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:50:31 [notice] 42#42: http file cache: /var/cache/nginx 0.000M, bsize: 4096
+2025/02/02 11:50:31 [notice] 1#1: signal 17 (SIGCHLD) received from 42
+2025/02/02 11:50:31 [notice] 1#1: cache loader process 42 exited with code 0
+2025/02/02 11:50:31 [notice] 1#1: signal 29 (SIGIO) received
+2025/02/02 11:50:36 [emerg] 49#49: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:51:12 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/02/02 11:51:12 [notice] 21#21: gracefully shutting down
+2025/02/02 11:51:12 [notice] 23#23: gracefully shutting down
+2025/02/02 11:51:12 [notice] 24#24: gracefully shutting down
+2025/02/02 11:51:12 [notice] 27#27: gracefully shutting down
+2025/02/02 11:51:12 [notice] 22#22: gracefully shutting down
+2025/02/02 11:51:12 [notice] 26#26: gracefully shutting down
+2025/02/02 11:51:12 [notice] 25#25: gracefully shutting down
+2025/02/02 11:51:12 [notice] 28#28: gracefully shutting down
+2025/02/02 11:51:12 [notice] 31#31: gracefully shutting down
+2025/02/02 11:51:12 [notice] 33#33: gracefully shutting down
+2025/02/02 11:51:12 [notice] 29#29: gracefully shutting down
+2025/02/02 11:51:12 [notice] 34#34: gracefully shutting down
+2025/02/02 11:51:12 [notice] 30#30: gracefully shutting down
+2025/02/02 11:51:12 [notice] 36#36: gracefully shutting down
+2025/02/02 11:51:12 [notice] 36#36: exiting
+2025/02/02 11:51:12 [notice] 37#37: gracefully shutting down
+2025/02/02 11:51:12 [notice] 35#35: gracefully shutting down
+2025/02/02 11:51:12 [notice] 38#38: gracefully shutting down
+2025/02/02 11:51:12 [notice] 40#40: gracefully shutting down
+2025/02/02 11:51:12 [notice] 39#39: gracefully shutting down
+2025/02/02 11:51:12 [notice] 39#39: exiting
+2025/02/02 11:51:12 [notice] 32#32: gracefully shutting down
+2025/02/02 11:51:12 [notice] 41#41: exiting
+2025/02/02 11:51:12 [notice] 21#21: exiting
+2025/02/02 11:51:12 [notice] 23#23: exiting
+2025/02/02 11:51:12 [notice] 24#24: exiting
+2025/02/02 11:51:12 [notice] 27#27: exiting
+2025/02/02 11:51:12 [notice] 22#22: exiting
+2025/02/02 11:51:12 [notice] 26#26: exiting
+2025/02/02 11:51:12 [notice] 25#25: exiting
+2025/02/02 11:51:12 [notice] 28#28: exiting
+2025/02/02 11:51:12 [notice] 31#31: exiting
+2025/02/02 11:51:12 [notice] 33#33: exiting
+2025/02/02 11:51:12 [notice] 29#29: exiting
+2025/02/02 11:51:12 [notice] 34#34: exiting
+2025/02/02 11:51:12 [notice] 30#30: exiting
+2025/02/02 11:51:12 [notice] 36#36: exit
+2025/02/02 11:51:12 [notice] 37#37: exiting
+2025/02/02 11:51:12 [notice] 35#35: exiting
+2025/02/02 11:51:12 [notice] 38#38: exiting
+2025/02/02 11:51:12 [notice] 40#40: exiting
+2025/02/02 11:51:12 [notice] 39#39: exit
+2025/02/02 11:51:12 [notice] 32#32: exiting
+2025/02/02 11:51:12 [notice] 21#21: exit
+2025/02/02 11:51:12 [notice] 23#23: exit
+2025/02/02 11:51:12 [notice] 24#24: exit
+2025/02/02 11:51:12 [notice] 27#27: exit
+2025/02/02 11:51:12 [notice] 22#22: exit
+2025/02/02 11:51:12 [notice] 26#26: exit
+2025/02/02 11:51:12 [notice] 25#25: exit
+2025/02/02 11:51:12 [notice] 28#28: exit
+2025/02/02 11:51:12 [notice] 31#31: exit
+2025/02/02 11:51:12 [notice] 33#33: exit
+2025/02/02 11:51:12 [notice] 29#29: exit
+2025/02/02 11:51:12 [notice] 34#34: exit
+2025/02/02 11:51:12 [notice] 30#30: exit
+2025/02/02 11:51:12 [notice] 37#37: exit
+2025/02/02 11:51:12 [notice] 35#35: exit
+2025/02/02 11:51:12 [notice] 38#38: exit
+2025/02/02 11:51:12 [notice] 40#40: exit
+2025/02/02 11:51:12 [notice] 32#32: exit
+2025/02/02 11:51:12 [notice] 1#1: signal 17 (SIGCHLD) received from 31
+2025/02/02 11:51:12 [notice] 1#1: worker process 23 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 24 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 26 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 29 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 30 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 31 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 35 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: cache manager process 41 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: signal 29 (SIGIO) received
+2025/02/02 11:51:12 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2025/02/02 11:51:12 [notice] 1#1: signal 17 (SIGCHLD) received from 39
+2025/02/02 11:51:12 [notice] 1#1: worker process 21 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 27 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 28 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 36 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 39 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 40 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: signal 29 (SIGIO) received
+2025/02/02 11:51:12 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2025/02/02 11:51:12 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2025/02/02 11:51:12 [notice] 1#1: worker process 22 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 25 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 32 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 33 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 34 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 37 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: worker process 38 exited with code 0
+2025/02/02 11:51:12 [notice] 1#1: exit
+2025/02/02 11:51:35 [notice] 1#1: using the "epoll" event method
+2025/02/02 11:51:35 [notice] 1#1: nginx/1.25.5
+2025/02/02 11:51:35 [notice] 1#1: built by gcc 13.2.1 20231014 (Alpine 13.2.1_git20231014) 
+2025/02/02 11:51:35 [notice] 1#1: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/02 11:51:35 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/02 11:51:35 [notice] 1#1: start worker processes
+2025/02/02 11:51:35 [notice] 1#1: start worker process 21
+2025/02/02 11:51:35 [notice] 1#1: start worker process 22
+2025/02/02 11:51:35 [notice] 1#1: start worker process 23
+2025/02/02 11:51:35 [notice] 1#1: start worker process 24
+2025/02/02 11:51:35 [notice] 1#1: start worker process 25
+2025/02/02 11:51:35 [notice] 1#1: start worker process 26
+2025/02/02 11:51:35 [notice] 1#1: start worker process 27
+2025/02/02 11:51:35 [notice] 1#1: start worker process 28
+2025/02/02 11:51:35 [notice] 1#1: start worker process 29
+2025/02/02 11:51:35 [notice] 1#1: start worker process 30
+2025/02/02 11:51:35 [notice] 1#1: start worker process 31
+2025/02/02 11:51:35 [notice] 1#1: start worker process 32
+2025/02/02 11:51:35 [notice] 1#1: start worker process 33
+2025/02/02 11:51:35 [notice] 1#1: start worker process 34
+2025/02/02 11:51:35 [notice] 1#1: start worker process 35
+2025/02/02 11:51:35 [notice] 1#1: start worker process 36
+2025/02/02 11:51:35 [notice] 1#1: start worker process 37
+2025/02/02 11:51:35 [notice] 1#1: start worker process 38
+2025/02/02 11:51:35 [notice] 1#1: start worker process 39
+2025/02/02 11:51:35 [notice] 1#1: start worker process 40
+2025/02/02 11:51:35 [notice] 1#1: start cache manager process 41
+2025/02/02 11:51:35 [notice] 1#1: start cache loader process 42
+2025/02/02 11:52:05 [emerg] 43#43: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:52:35 [notice] 42#42: http file cache: /var/cache/nginx 0.000M, bsize: 4096
+2025/02/02 11:52:35 [notice] 1#1: signal 17 (SIGCHLD) received from 42
+2025/02/02 11:52:35 [notice] 1#1: cache loader process 42 exited with code 0
+2025/02/02 11:52:35 [notice] 1#1: signal 29 (SIGIO) received
+2025/02/02 11:52:40 [emerg] 49#49: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:53:44 [emerg] 61#61: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:54:19 [emerg] 67#67: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:54:54 [emerg] 73#73: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:55:28 [emerg] 80#80: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:56:03 [emerg] 86#86: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 11:56:38 [emerg] 92#92: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:12:44 [emerg] 283#283: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:27:50 [emerg] 462#462: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:28:25 [emerg] 467#467: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:29:00 [emerg] 473#473: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:29:34 [emerg] 479#479: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:30:08 [emerg] 485#485: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:32:42 [emerg] 515#515: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:33:16 [emerg] 521#521: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:33:51 [emerg] 527#527: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:34:26 [emerg] 533#533: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:35:00 [emerg] 539#539: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:35:34 [emerg] 545#545: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:36:08 [emerg] 551#551: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:36:42 [emerg] 557#557: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:39:47 [emerg] 593#593: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:40:21 [emerg] 599#599: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:40:55 [emerg] 605#605: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:41:29 [emerg] 611#611: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:42:04 [emerg] 617#617: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 12:42:38 [emerg] 623#623: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 16:35:31 [emerg] 2389#2389: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:00:40 [emerg] 3407#3407: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:01:15 [emerg] 3413#3413: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:01:49 [emerg] 3419#3419: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:02:23 [emerg] 3425#3425: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:02:57 [emerg] 3431#3431: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:03:32 [emerg] 3437#3437: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:04:07 [emerg] 3443#3443: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:04:42 [emerg] 3449#3449: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:05:17 [emerg] 3455#3455: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:05:52 [emerg] 3461#3461: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:06:27 [emerg] 3467#3467: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:07:02 [emerg] 3473#3473: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:07:37 [emerg] 3479#3479: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:08:12 [emerg] 3485#3485: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:08:47 [emerg] 3491#3491: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:09:22 [emerg] 3497#3497: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:09:57 [emerg] 3503#3503: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:10:32 [emerg] 3509#3509: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:11:07 [emerg] 3515#3515: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:11:42 [emerg] 3521#3521: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:12:16 [emerg] 3527#3527: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:12:51 [emerg] 3533#3533: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:13:27 [emerg] 3539#3539: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:14:02 [emerg] 3545#3545: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:14:37 [emerg] 3551#3551: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:15:12 [emerg] 3557#3557: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:15:47 [emerg] 3563#3563: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:16:22 [emerg] 3570#3570: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:16:57 [emerg] 3576#3576: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:17:32 [emerg] 3582#3582: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:18:07 [emerg] 3588#3588: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:18:42 [emerg] 3594#3594: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:19:17 [emerg] 3600#3600: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:19:51 [emerg] 3606#3606: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:20:26 [emerg] 3613#3613: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:21:00 [emerg] 3619#3619: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:21:35 [emerg] 3625#3625: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:22:10 [emerg] 3631#3631: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:22:45 [emerg] 3637#3637: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:23:20 [emerg] 3643#3643: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:23:55 [emerg] 3649#3649: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:24:30 [emerg] 3655#3655: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:25:05 [emerg] 3661#3661: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:25:40 [emerg] 3667#3667: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:26:15 [emerg] 3673#3673: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:26:50 [emerg] 3679#3679: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:27:25 [emerg] 3685#3685: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:27:59 [emerg] 3691#3691: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:28:34 [emerg] 3697#3697: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:29:09 [emerg] 3703#3703: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:29:44 [emerg] 3709#3709: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:30:19 [emerg] 3715#3715: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:30:54 [emerg] 3721#3721: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:31:29 [emerg] 3727#3727: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:32:04 [emerg] 3733#3733: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:32:39 [emerg] 3739#3739: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:33:14 [emerg] 3745#3745: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:33:49 [emerg] 3751#3751: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:34:24 [emerg] 3757#3757: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:34:59 [emerg] 3763#3763: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:35:35 [emerg] 3769#3769: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5
+2025/02/02 18:36:10 [emerg] 3775#3775: host not found in upstream "web:8000" in /etc/nginx/conf.d/default.conf:5

@@ -1,0 +1,91 @@
+{
+    "categories": [
+        {
+            "name": "General Information",
+            "description": "Basic information about the university"
+        },
+        {
+            "name": "Admissions",
+            "description": "Information about the admission process",
+            "parent": "General Information"
+        },
+        {
+            "name": "Academic Programs",
+            "description": "Information about departments and courses",
+            "parent": "General Information"
+        },
+        {
+            "name": "Campus Life",
+            "description": "Information about student life and facilities",
+            "parent": "General Information"
+        },
+        {
+            "name": "Contact",
+            "description": "Contact information for different departments",
+            "parent": "General Information"
+        }
+    ],
+    "intents": [
+        {
+            "name": "admission_inquiry",
+            "description": "Questions about admission process and requirements",
+            "keywords": ["admission", "apply", "application", "enroll", "register", "join", "requirements", "eligibility"]
+        },
+        {
+            "name": "program_inquiry",
+            "description": "Questions about academic programs and courses",
+            "keywords": ["program", "course", "department", "major", "study", "degree", "faculty"]
+        },
+        {
+            "name": "facilities_inquiry",
+            "description": "Questions about campus facilities",
+            "keywords": ["facility", "laboratory", "library", "cafeteria", "hostel", "dormitory", "wifi", "internet"]
+        },
+        {
+            "name": "contact_inquiry",
+            "description": "Questions about contact information",
+            "keywords": ["contact", "email", "phone", "address", "location", "office"]
+        }
+    ],
+    "knowledge_base": [
+        {
+            "question": "What are the admission requirements for undergraduate programs?",
+            "answer": "For demonstration purposes, here are sample admission requirements:\n\n1. Minimum GPA of 3.0 in high school\n2. SAT/ACT scores\n3. English proficiency test (IELTS/TOEFL)\n4. Personal statement\n5. Letters of recommendation\n\nNote: These are sample requirements. The actual requirements will be provided by the university administration.",
+            "category": "Admissions",
+            "intent": "admission_inquiry",
+            "priority": 5,
+            "context_data": {
+                "application_deadline": "Sample deadline: March 31st",
+                "required_documents": ["Academic transcripts", "Test scores", "Recommendation letters"]
+            }
+        },
+        {
+            "question": "What departments and programs are available?",
+            "answer": "This is a demonstration of available departments:\n\n1. Computer Science & Engineering\n2. Business Administration\n3. Electrical & Electronic Engineering\n4. Architecture\n5. Law\n\nNote: This is a sample list. The actual list of departments will be provided by the university administration.",
+            "category": "Academic Programs",
+            "intent": "program_inquiry",
+            "priority": 5
+        },
+        {
+            "question": "What facilities are available on campus?",
+            "answer": "For demonstration, here are sample campus facilities:\n\n1. Modern Computer Labs\n2. Central Library\n3. Research Centers\n4. Student Dormitories\n5. Sports Complex\n6. Medical Center\n7. Career Development Center\n\nNote: This is a sample list. The actual facilities will be provided by the university administration.",
+            "category": "Campus Life",
+            "intent": "facilities_inquiry",
+            "priority": 4
+        },
+        {
+            "question": "How can I contact the admission office?",
+            "answer": "This is a demonstration of contact information:\n\nAdmission Office:\nEmail: admissions@university.edu\nPhone: (123) 456-7890\nLocation: Main Campus, Administrative Building\n\nNote: This is sample contact information. The actual contact details will be provided by the university administration.",
+            "category": "Contact",
+            "intent": "contact_inquiry",
+            "priority": 4
+        },
+        {
+            "question": "What is the application process?",
+            "answer": "Here's a demonstration of the application process:\n\n1. Submit online application\n2. Pay application fee\n3. Submit required documents\n4. Attend entrance exam (if required)\n5. Interview (for selected programs)\n\nNote: This is a sample process. The actual application process will be provided by the university administration.",
+            "category": "Admissions",
+            "intent": "admission_inquiry",
+            "priority": 5
+        }
+    ]
+}
