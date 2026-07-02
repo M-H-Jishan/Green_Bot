@@ -14,7 +14,15 @@ class QueryLogSerializer(serializers.ModelSerializer):
         read_only_fields = ['timestamp']
 
 class ChatbotQuerySerializer(serializers.Serializer):
-    query = serializers.CharField(required=True, help_text="User's question")
+    query = serializers.CharField(required=False, help_text="User's question")
+    message = serializers.CharField(required=False, help_text="Alias for 'query'")
+
+    def validate(self, attrs):
+        query = attrs.get('query') or attrs.get('message')
+        if not query:
+            raise serializers.ValidationError("Either 'query' or 'message' is required.")
+        attrs['query'] = query
+        return attrs
 
 class ChatbotResponseSerializer(serializers.Serializer):
     response = serializers.CharField(help_text="Bot's answer")

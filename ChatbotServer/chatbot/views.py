@@ -1,43 +1,54 @@
+import logging
 from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
+from django_ratelimit.decorators import ratelimit
+
+from .serializers import ChatbotQuerySerializer, ChatbotResponseSerializer
 from .services import ChatbotService
 
-@method_decorator(csrf_exempt, name='dispatch')
-class ChatbotView(APIView):
-    permission_classes = [AllowAny]
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.chatbot_service = ChatbotService()
+logger = logging.getLogger(__name__)
 
-    def post(self, request, *args, **kwargs):
-        try:
-            # Get message from request data
-            message = request.data.get('message', '')
-            
-            if not message:
-                return Response({
-                    'error': 'No message provided',
-                    'response': 'Please provide a message to get a response.'
-                }, status=status.HTTP_400_BAD_REQUEST)
 
-            # Process the message
-            result = self.chatbot_service.process_query(message)
-            
-            # Return the response
-            return Response({
-                'response': result.get('response', 'Sorry, I could not process your request.'),
-                'source': result.get('source', 'system')
-            })
-            
-        except Exception as e:
-            print(f"Error in ChatbotView: {e}")
-            return Response({
-                'error': 'Internal server error',
-                'response': 'Sorry, I encountered an error. Please try again.',
-                'details': str(e)
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+@ratelimit(key='user', rate='20/m', method='POST', block=True)
+def chatbot_ask(request):
+    """
+    Process a chatbot query.
+    Requires JWT authentication. Rate limited to 20 requests/minute per user.
+    """
+    serializer = ChatbotQuerySerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    query = serializer.validated_data['query']
+
+    logger.info(f"Chatbot query from user {request.user.username}: {query[:100]}")
+
+    try:
+        service = ChatbotService()
+        result = service.process_query(query)
+
+        response_data = {
+            'response': result['response'],
+            'source': result['source'],
+            'source_url': result.get('source_url'),
+            'success': result.get('success', True),
+            'error_message': result.get('error'),
+        }
+        response_serializer = ChatbotResponseSerializer(data=response_data)
+        response_serializer.is_valid(raise_exception=True)
+        return Response(response_serializer.validated_data, status=status.HTTP_200_OK)
+
+    except Exception as e:
+        logger.error(f"Unexpected error in chatbot_ask: {e}")
+        return Response(
+            {
+                'response': 'An internal error occurred. Please try again.',
+                'source': 'error',
+                'source_url': None,
+                'success': False,
+                'error_message': str(e),
+            },
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
