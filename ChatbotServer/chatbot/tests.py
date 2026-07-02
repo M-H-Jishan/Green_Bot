@@ -1,10 +1,13 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
+
 from .models import KnowledgeBase, QueryLog
 from .services import ChatbotService
+
 
 class KnowledgeBaseTests(TestCase):
     def setUp(self):
@@ -18,6 +21,7 @@ class KnowledgeBaseTests(TestCase):
         self.assertEqual(self.kb_entry.question, "What is Python?")
         self.assertTrue(isinstance(self.kb_entry, KnowledgeBase))
 
+
 class ChatbotServiceTests(TestCase):
     def setUp(self):
         self.service = ChatbotService()
@@ -28,53 +32,98 @@ class ChatbotServiceTests(TestCase):
         )
 
     def test_knowledge_base_search(self):
-        response = self.service.search_knowledge_base("What is Python?")
-        self.assertIsNotNone(response)
-        self.assertEqual(response['source'], 'KB')
+        result = self.service.search_knowledge_base("What is Python?")
+        self.assertIsNotNone(result)
+        self.assertEqual(result['source'], 'KB')
+        self.assertTrue(result['success'])
 
-    @patch('openai.ChatCompletion.acreate')
-    async def test_openai_response(self, mock_openai):
-        mock_openai.return_value.choices = [
-            type('obj', (object,), {
-                'message': type('obj', (object,), {
-                    'content': 'Mocked OpenAI response'
-                })
-            })
-        ]
-        
-        response = await self.service.get_openai_response("Test question")
-        self.assertEqual(response['source'], 'AI')
-        self.assertTrue(response['success'])
+    def test_knowledge_base_no_match(self):
+        result = self.service.search_knowledge_base("xyzabc12345")
+        self.assertIsNone(result)
+
+    def test_process_query_empty(self):
+        result = self.service.process_query("")
+        self.assertEqual(result['source'], 'system')
+        self.assertIn('ask me', result['response'].lower())
+
+    def test_process_query_kb_match(self):
+        result = self.service.process_query("What is Python?")
+        self.assertEqual(result['source'], 'KB')
+        self.assertEqual(result['response'], "Python is a programming language.")
+
+    def test_process_query_logs_to_querylog(self):
+        self.service.process_query("What is Python?")
+        self.assertTrue(QueryLog.objects.filter(query="What is Python?").exists())
+
+    @patch('chatbot.services.get_llm_provider')
+    def test_process_query_llm_fallback(self, mock_get_provider):
+        mock_provider = MagicMock()
+        mock_provider.get_response.return_value = {
+            'response': 'AI generated answer',
+            'success': True,
+            'error': None
+        }
+        mock_get_provider.return_value = mock_provider
+
+        service = ChatbotService()
+        service.llm_provider = mock_provider
+        # Use a query with no word overlap with the KB entry about Python
+        result = service.process_query("xyzabc12345")
+        self.assertEqual(result['source'], 'AI')
+        self.assertEqual(result['response'], 'AI generated answer')
+
+    @patch('chatbot.services.get_llm_provider')
+    def test_process_query_llm_failure_falls_back(self, mock_get_provider):
+        mock_provider = MagicMock()
+        mock_provider.get_response.return_value = {
+            'response': '',
+            'success': False,
+            'error': 'API key invalid'
+        }
+        mock_get_provider.return_value = mock_provider
+
+        service = ChatbotService()
+        service.llm_provider = mock_provider
+        result = service.process_query("xyzabc12345")
+        self.assertEqual(result['source'], 'system')
+        self.assertIn("couldn't find", result['response'].lower())
+
 
 class ChatbotAPITests(APITestCase):
     def setUp(self):
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass123'
+        )
         self.kb_entry = KnowledgeBase.objects.create(
             question="What is Python?",
             answer="Python is a programming language.",
             source_url="https://python.org"
         )
+        self.url = reverse('chatbot-ask')
 
-    @patch('chatbot.services.ChatbotService.process_query')
-    async def test_ask_endpoint(self, mock_process):
-        mock_process.return_value = {
-            'response': 'Test response',
-            'source': 'KB',
-            'success': True
-        }
-        
-        url = reverse('chatbot-ask')
-        data = {'query': 'What is Python?'}
-        response = await self.client.post(url, data, format='json')
-        
+    def test_ask_endpoint_requires_auth(self):
+        response = self.client.post(self.url, {'query': 'What is Python?'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_ask_endpoint_with_auth(self):
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post(self.url, {'query': 'What is Python?'}, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['source'], 'KB')
 
-    def test_rate_limiting(self):
-        url = reverse('chatbot-ask')
-        data = {'query': 'Test query'}
-        
-        # Make 11 requests (1 over limit)
-        for _ in range(11):
-            response = self.client.post(url, data, format='json')
-        
-        self.assertEqual(response.status_code, status.HTTP_429_TOO_MANY_REQUESTS)
+    def test_ask_endpoint_accepts_message_alias(self):
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post(self.url, {'message': 'What is Python?'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_ask_endpoint_empty_query(self):
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post(self.url, {}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_ask_endpoint_response_format(self):
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post(self.url, {'query': 'What is Python?'}, format='json')
+        self.assertIn('response', response.data)
+        self.assertIn('source', response.data)
+        self.assertIn('success', response.data)

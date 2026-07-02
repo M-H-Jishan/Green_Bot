@@ -1,146 +1,204 @@
-# Green Bot: Intelligent University Student Support System
+# Green Bot — AI-Powered Chatbot
 
-## Project Overview
+A production-ready chatbot with hybrid search (Knowledge Base + custom JSON data) and LLM fallback (OpenAI or Claude). Built with Django REST Framework, React + Vite, and Docker.
 
-Green Bot is an advanced AI-powered chatbot system designed specifically to enhance student support services at universities. By leveraging cutting-edge natural language processing and machine learning technologies, Green Bot provides immediate, accurate, and personalized assistance to students 24/7.
+## Features
 
-## 🌟 Key Features
+- **Hybrid Search**: Knowledge Base → Custom JSON data → LLM fallback
+- **Multi-Provider LLM**: Switch between OpenAI and Claude via env var
+- **Custom Data**: Drop in any JSON file — no code changes needed
+- **JWT Authentication**: Secure API with token-based auth
+- **Rate Limiting**: Configurable per-user rate limits
+- **React Frontend**: Modern UI with Tailwind CSS, typing indicators, error states
+- **Docker Ready**: Full docker-compose setup with Redis and optional PostgreSQL
+- **API Docs**: Auto-generated Swagger docs via drf-spectacular
 
-### Core Capabilities
-- **Intelligent Query Processing**: Advanced NLP for accurate query understanding
-- **Multi-Source Information**: Combines knowledge base, university data, and AI
-- **Context Awareness**: Maintains conversation context for better responses
-- **Smart Categorization**: Organizes information hierarchically
-- **Related Questions**: Suggests relevant follow-up questions
-- **Prerequisites Tracking**: Identifies and suggests prerequisite information
+## Quick Start
 
-### Technical Features
-- **Modern Architecture**: Django backend + React frontend
-- **RESTful API**: Well-documented endpoints for easy integration
-- **Database Integration**: Hybrid approach using PostgreSQL and JSON
-- **Security**: Token-based authentication and rate limiting
-- **Swagger Documentation**: Interactive API documentation
-- **Docker Support**: Easy deployment with containers
+### Prerequisites
 
-## 📁 Project Structure
+- Python 3.11+
+- Node.js 20+
+- (Optional) Docker & Docker Compose
+
+### Backend Setup
+
+```bash
+cd ChatbotServer
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Copy env file and configure
+cp .env.example .env
+# Edit .env with your API keys and settings
+
+# Run migrations
+python manage.py migrate
+
+# Create admin user
+python manage.py createsuperuser
+
+# Start dev server
+python manage.py runserver
+```
+
+### Frontend Setup
+
+```bash
+cd Frontend
+
+# Install dependencies
+npm install
+
+# Copy env file and configure
+cp .env.example .env
+# Edit .env if your backend URL differs
+
+# Start dev server
+npm run dev
+```
+
+The frontend runs on `http://localhost:5173` and proxies API requests to `http://localhost:8000`.
+
+### Docker Setup (Recommended)
+
+```bash
+# Copy and configure environment
+cp ChatbotServer/.env.example ChatbotServer/.env
+# Edit .env with your API keys
+
+# Build and start all services
+docker-compose up -d --build
+
+# Run migrations
+docker-compose exec backend python manage.py migrate
+
+# Create admin user
+docker-compose exec backend python manage.py createsuperuser
+```
+
+Services:
+- Frontend: `http://localhost:80`
+- Backend API: `http://localhost:8000`
+- API Docs: `http://localhost:8000/api/docs/`
+- Admin: `http://localhost:8000/admin/`
+
+## Configuration
+
+All configuration is via environment variables. See `.env.example` for all options.
+
+### Key Settings
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `LLM_PROVIDER` | `openai` | `openai` or `claude` |
+| `OPENAI_API_KEY` | — | Required if using OpenAI |
+| `OPENAI_MODEL` | `gpt-4o-mini` | OpenAI model to use |
+| `ANTHROPIC_API_KEY` | — | Required if using Claude |
+| `CLAUDE_MODEL` | `claude-sonnet-4-20250514` | Claude model to use |
+| `DATA_FILE_PATH` | `chatbot/data/university_data.json` | Path to your custom JSON data |
+| `DATABASE_URL` | SQLite | PostgreSQL URL for production |
+| `REDIS_URL` | — | Redis URL for caching (optional) |
+| `DEBUG` | `True` | Set to `False` in production |
+
+### Using Custom Data
+
+1. Create a JSON file with your data (see `chatbot/data/university_data.json` for format)
+2. Set `DATA_FILE_PATH` in your `.env` to point to your file
+3. Restart the server — no code changes needed
+
+The JSON data is searched with fuzzy matching. If no match is found, the LLM is used as fallback (with the JSON data injected as context).
+
+### Switching LLM Providers
+
+Just change one env var:
+
+```bash
+# Use OpenAI
+LLM_PROVIDER=openai
+OPENAI_API_KEY=sk-...
+
+# Or use Claude
+LLM_PROVIDER=claude
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+If no API key is set, the bot operates in KB-only mode (no LLM fallback).
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/token/` | Get JWT token (username + password) |
+| POST | `/api/auth/token/refresh/` | Refresh JWT token |
+| POST | `/api/chat/` | Send a chat query (requires auth) |
+| GET | `/api/schema/` | OpenAPI schema |
+| GET | `/api/docs/` | Swagger UI |
+| GET | `/health/` | Health check |
+
+### Chat API Example
+
+```bash
+# Get token
+curl -X POST http://localhost:8000/api/auth/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin", "password": "yourpassword"}'
+
+# Send query
+curl -X POST http://localhost:8000/api/chat/ \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <your-token>" \
+  -d '{"query": "What programs do you offer?"}'
+```
+
+## Running Tests
+
+```bash
+cd ChatbotServer
+python manage.py test
+```
+
+## Project Structure
 
 ```
 Green_Bot/
-├── ChatbotServer/        # Django Backend
-│   ├── chatbot/         # Main chatbot application
-│   ├── data/           # University data and configurations
-│   └── requirements.txt # Python dependencies
-├── Frontend/            # React Frontend
-│   ├── src/            # Source code
-│   └── package.json    # Node.js dependencies
-└── docs/               # Documentation
+├── ChatbotServer/          # Django backend
+│   ├── ChatbotServer/      # Django project settings
+│   ├── chatbot/            # Chatbot app
+│   │   ├── data/           # Custom JSON data files
+│   │   ├── migrations/     # Database migrations
+│   │   ├── admin.py        # Admin configuration
+│   │   ├── llm_provider.py # LLM abstraction (OpenAI + Claude)
+│   │   ├── models.py       # KnowledgeBase, QueryLog, Category
+│   │   ├── serializers.py  # DRF serializers
+│   │   ├── services.py     # Chatbot service logic
+│   │   ├── tests.py        # Unit & API tests
+│   │   ├── urls.py         # URL routing
+│   │   └── views.py        # API views
+│   ├── Dockerfile          # Backend Docker image
+│   ├── requirements.txt    # Python dependencies
+│   └── .env.example        # Environment template
+├── Frontend/               # React + Vite frontend
+│   ├── src/
+│   │   ├── api/            # API client
+│   │   ├── components/     # React components
+│   │   ├── hooks/          # Custom hooks
+│   │   ├── types/          # TypeScript types
+│   │   ├── App.tsx         # Main app
+│   │   └── main.tsx        # Entry point
+│   ├── Dockerfile          # Frontend Docker image
+│   ├── nginx.conf          # Nginx config for production
+│   └── package.json        # Node dependencies
+├── docker-compose.yml      # Full stack orchestration
+├── .gitignore
+└── README.md
 ```
 
-## 🚀 Getting Started
+## License
 
-### Prerequisites
-- Python 3.11+
-- Node.js 16+
-- PostgreSQL (optional, can use SQLite)
-- Docker (optional)
-
-### Backend Setup
-1. Navigate to ChatbotServer:
-   ```bash
-   cd ChatbotServer
-   ```
-
-2. Create virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Set up database:
-   ```bash
-   python manage.py migrate
-   python manage.py createsuperuser
-   ```
-
-5. Start server:
-   ```bash
-   python manage.py runserver
-   ```
-
-### Frontend Setup
-1. Navigate to Frontend:
-   ```bash
-   cd Frontend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start development server:
-   ```bash
-   npm start
-   ```
-
-## 📚 Data Structure
-
-### 1. Knowledge Base
-Managed through Django Admin interface (`/admin`):
-- Categories (e.g., Admissions, Courses, Campus Life)
-- Questions and Answers
-- Related Questions
-- Prerequisites
-
-### 2. University Data
-Stored in `university_data.json`:
-- University Information
-- Academic Programs
-- Facilities
-- Faculty Information
-- Admission Details
-- Financial Information
-
-For detailed data structure templates, see [Data Structure Documentation](docs/DATA_STRUCTURE.md).
-
-## 🔧 Configuration
-
-### Environment Variables
-Create `.env` file in ChatbotServer:
-```env
-DEBUG=True
-SECRET_KEY=your-secret-key
-DATABASE_URL=sqlite:///db.sqlite3  # or your PostgreSQL URL
-```
-
-### API Configuration
-- Base URL: `http://localhost:8000/api/`
-- Authentication: Token-based
-- Rate Limiting: 100 requests/hour
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-For support and questions:
-- Create an issue in the repository
-- Contact the development team
-- Check the [Troubleshooting Guide](docs/TROUBLESHOOTING.md)
-
----
-*This project was developed as part of the university's digital transformation initiative to enhance student support services.*
+This project is open source. Feel free to use and modify.

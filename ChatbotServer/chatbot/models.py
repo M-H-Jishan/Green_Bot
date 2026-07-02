@@ -23,27 +23,6 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
         ordering = ['name']
 
-class Intent(models.Model):
-    """
-    User intents for better question understanding
-    """
-    name = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(default=timezone.now)
-    
-    def __str__(self):
-        return self.name
-
-    def save(self, *args, **kwargs):
-        if not self.id:  # Only set created_at for new instances
-            self.created_at = timezone.now()
-        self.updated_at = timezone.now()
-        super().save(*args, **kwargs)
-
-    class Meta:
-        ordering = ['name']
-
 class KnowledgeBase(models.Model):
     """
     Enhanced model to store predefined FAQ data with categories and context
@@ -75,8 +54,10 @@ class QueryLog(models.Model):
     Model to log all chatbot interactions for analytics.
     """
     query = models.TextField()
-    response = models.TextField()
-    source = models.CharField(max_length=50)  # KB, UNI, DEFAULT, etc.
+    response = models.TextField(blank=True)
+    source = models.CharField(max_length=50)  # KB, AI, DATA, DEFAULT, ERROR, etc.
+    success = models.BooleanField(default=True)
+    error_message = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
